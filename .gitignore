@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
+MUJOCO_LOG.TXT
+# your own phone recordings stay local
+clothespin/data/raw_videos/
+# videos the scripts write (the final ones are in videos/)
+clothespin/results/*.mp4
+clothespin_reclip/results/

@@ -1,0 +1,46 @@
+# Mini clothespin (red painted wood), read from the 2026-11-16 photos with the CM side of the tape.
+# Approximate to ~1 mm; the pin is small, so treat these as +-1 mm.
+
+# Which pin the scene and scripts use: clothespin_mini (the user's red pin) or clothespin_standard
+use: clothespin_standard
+
+clothespin_mini:
+  description: mini wooden spring clothespin, painted red, two legs rocking on a steel wire spring
+  length_m: 0.035            # end to end (photos 12.18.10 (2) and 12.25.37)
+  width_m: 0.007             # side to side (photo 12.18.10)
+  closed_thickness_m: 0.008  # both legs together at the end (photo 12.18.10 (1))
+  leg_thickness_m: 0.004     # one leg = half the closed thickness
+  spring_from_tail_m: 0.013  # spring coil is near the TAILS (photos 12.24.01: squeezed, coil close to the fingers)
+                             # -> tail lever 1.3 cm, jaw lever 2.2 cm
+  jaw_open_max_m: 0.012      # jaw-tip gap when the tails are squeezed fully (photos 12.24.01)
+  tail_rest_gap_m: 0.007     # gap between the tails at rest; consistent with the levers: 1.2 cm * 1.3 / 2.2
+  mass_kg: 0.001             # below the kitchen scale's resolution; "about 1 g or less"
+  squeeze_force_n: 3.0       # ESTIMATE (not measured): typical for mini pins, force at the tail to open fully
+  colour: red                # easy to see on video
+
+# Standard wooden clothespin. NOT MEASURED: typical values, chosen because the mini pin's 13 mm tails were
+# too short for the robot's ~15 mm fingertips (the pin scissored out between them, 1000+ physics runs).
+clothespin_standard:
+  description: standard wooden spring clothespin (ESTIMATED typical dimensions, not measured)
+  length_m: 0.072
+  width_m: 0.010
+  closed_thickness_m: 0.010
+  leg_thickness_m: 0.005
+  spring_from_tail_m: 0.030  # tail lever 3.0 cm, jaw lever 4.2 cm
+  jaw_open_max_m: 0.018
+  tail_rest_gap_m: 0.013     # consistent with the levers: 1.8 cm * 3.0 / 4.2
+  mass_kg: 0.005
+  squeeze_force_n: 3.5       # ESTIMATE: force at the tail end to open fully (6 N needed ~10 N mid-tail, the robot finger limit)
+  colour: red                # kept red so it shows up the same in the videos
+
+# Task setup (photo WhatsApp Image 2026-11-16 at 13.35.17, videos pin_01 / pin_02)
+setup:
+  table_height_m: 0.76       # cabinet top, measured by the user
+  paper: 3-hole graph paper lying FLAT on the cabinet top, overhanging the front edge a little
+  paper_size_m: [0.216, 0.279]   # standard US letter (8.5 x 11 in), confirmed; holes not modelled
+  paper_overhang_m: 0.025        # sticks out past the cabinet's front edge by <= 3 cm (user)
+  pin_on_paper: clipped on the paper's front (overhanging) edge, jaws on the paper, tails pointing
+                straight out toward the person, pin lying flat (horizontal)
+  demo_videos:
+    pin_01: "WhatsApp Video 2026-11-16 at 13.32.20.mp4"      # 36 s - main reference
+    pin_02: "WhatsApp Video 2026-11-16 at 13.32.20 (1).mp4"  # 32 s - backup

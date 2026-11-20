@@ -1,0 +1,52 @@
+# Real-world object measurements, used to build the MuJoCo scene.
+# Read from the 2026-11-13 photos (tape measure in inches); approximate to a few mm.
+
+cup:
+  description: tall white marble-pattern ceramic mug ("Mr"), loop handle; grasped around the body, handle to the side
+  material: glazed ceramic (opaque white, high contrast on the brown desk)
+  circumference_in: 9.4           # tape wrapped around the body
+  diameter_m: 0.076               # = circumference / pi (23.9 cm / pi); slightly tapered, wider at the rim
+  height_m: 0.12                  # ~4.7 in, rim to base
+  shape: tall tapered cylinder
+  mass_kg: 0.342                  # kitchen scale, empty
+
+# previous choice (replaced 2026-11-13 evening: switched to the taller, narrower mug)
+cup_green_speckled:
+  diameter_m: 0.098
+  height_m: 0.076
+  mass_kg: 0.317
+
+# previous choice, kept for reference (replaced 2026-11-13: clear glass was hard to see on video)
+cup_glass_ikea:
+  diameter_m: 0.081
+  height_m: 0.072
+
+coaster:
+  description: round woven cotton-rope coaster, light tan
+  diameter_m: 0.110               # ~4.3 in
+  thickness_m: 0.008              # ~0.3 in
+
+table:
+  description: height-adjustable desk, raised so a standing G1 can reach (0.45 m coffee table was out of reach)
+  height_m: 0.88                  # measured after adjusting
+  # G1 side-grasp reach at mug mid-height (desk + 0.04 m), from sim/IK analysis:
+  #   desk 0.76 -> 43 cells (5x5 cm), 0.85 -> 57, 0.90 -> 62, 0.95 -> 66.
+  #   0.90 chosen: big workspace, and the lifted mug stays below the G1 shoulder (~1.08 m).
+
+# Where things go on the desk. d = distance of the object's CENTRE from the desk edge you stand at,
+# s = sideways from the centre line of your body (+ = left, - = right). Both in metres.
+# The demonstrator uses their LEFT hand, so the robot uses its LEFT arm + left Inspire hand.
+# Same arrangement as the phone video: the mug is on YOUR RIGHT of the coaster when you face the
+# robot (= the robot's left), 16 cm apart centre-to-centre, both 17 cm in from the desk edge.
+# robot_stand_s: the robot stands 4 cm to your left of where you stood, so both objects are in
+# front of its left arm (found by testing standing spots from -0.20 to +0.04 m in simulation).
+demo_hand: left
+layout:
+  robot_stand_s: 0.04
+  coaster: {d: 0.17, s: 0.0}
+  mug_start:
+    A: {d: 0.17, s: 0.16}      # all five marks tested: SUCCESS (1.2-1.3 cm from coaster centre)
+    B: {d: 0.14, s: 0.16}
+    C: {d: 0.20, s: 0.16}
+    D: {d: 0.17, s: 0.13}
+    E: {d: 0.17, s: 0.19}
